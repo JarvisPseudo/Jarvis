@@ -18,6 +18,8 @@ class Settings(BaseSettings):
 
     # LLM配置
     LLM_API_KEY: str = Field("LLM_API_KEY")
+    LLM_MODEL: str = Field("qwen3.5-plus")
+    LLM_MAX_TOKENS: int = Field(2048)
 
     # 调度器配置
     SCHEDULER_SQLITE_FILE: str = Field("./local/scheduler.db")

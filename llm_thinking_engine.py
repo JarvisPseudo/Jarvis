@@ -1,7 +1,5 @@
-from typing import Optional, Dict, Any
-from abc import ABC, abstractmethod
+from typing import Optional, Dict
 from dataclasses import dataclass
-from enum import Enum
 import json
 import os
 from config.settings import settings
@@ -9,6 +7,7 @@ from openai import OpenAI
 from coordinator import InteractionContext, ActionType
 from coordinator import Thought, ToolCall
 from utils import logger
+from config import settings
 
 
 @dataclass
@@ -16,10 +15,10 @@ class LLMConfig:
     """LLM配置类"""
     api_key: Optional[str] = None
     base_url: str = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-    model: str = "deepseek-v3.2"
+    model: str = settings.LLM_MODEL
     enable_thinking: bool = True
     temperature: float = 0.7
-    max_tokens: int = 2048
+    max_tokens: int = settings.LLM_MAX_TOKENS
 
 
 class LLMThinkingEngine:
